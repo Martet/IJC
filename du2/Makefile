@@ -15,7 +15,7 @@ wordcountcc: wordcount.cc
 wordcount: wordcount.o libhtab.a
 	$(CC) $(CFLAGS) $<  -L. -lhtab -o $@
 
-libhtab.a: htab_init.o htab_hash_function.o
+libhtab.a: htab_init.o htab_hash_function.o htab_size.o
 	ar rcs $@ $^
 
 
