@@ -7,10 +7,20 @@ CFLAGS = -g -std=c11 -pedantic -Wall -Wextra -O2
 LDFLAGS_ = -lm
 CC = gcc
 
-all: tail wordcount
+all: tail libhtab.a wordcount
 
-wordcount: wordcount.cc
+wordcountcc: wordcount.cc
 	g++ -std=c++11 -O2 wordcount.cc -o wordcount
+
+wordcount: wordcount.o libhtab.a
+	$(CC) $(CFLAGS) $<  -L. -lhtab -o $@
+
+libhtab.a: htab_init.o htab_hash_function.o
+	ar rcs $@ $^
+
+
+#htab%.o: htab*.c htab*.h
+#	$(CC) $(CFLAGS) -fPIC -c $< -o $@
 
 zip:
 	rm -f xzmitk01.zip
