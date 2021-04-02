@@ -117,7 +117,7 @@ int main(int argc, char *argv[]){
                 int nextChar;
                 while((nextChar = getc(f)) != '\n' && nextChar != EOF) printf("%c", nextChar);
                 if(!errPrinted){
-                    printf("Line %d was truncated to the max length of 511 chars (this error will show only once)\n", line);
+                    fprintf(stderr, "Line %d was truncated to the max length of 511 chars (this error will show only once)\n", line);
                     errPrinted = true;
                 }
             }
