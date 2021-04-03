@@ -3,7 +3,7 @@
 # Autor: Martin Zmitko, xzmitk01
 # Přeloženo: gcc 9.3
 
-CFLAGS = -g -std=c11 -pedantic -Wall -Wextra -O2
+CFLAGS = -g -std=c99 -pedantic -Wall -Wextra -O2
 LDFLAGS_ = -lm
 CC = gcc
 
@@ -15,7 +15,7 @@ wordcountcc: wordcount.cc
 wordcount: wordcount.o libhtab.a
 	$(CC) $(CFLAGS) $<  -L. -lhtab -o $@
 
-libhtab.a: htab_init.o htab_hash_function.o htab_size.o
+libhtab.a: htab_init.o htab_hash_function.o htab_size.o htab_bucket_count.o
 	ar rcs $@ $^
 
 

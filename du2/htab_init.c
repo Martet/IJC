@@ -1,6 +1,4 @@
 #include <stdlib.h>
-#include <string.h>
-#include "htab.h"
 #include "htab_private.h"
 
 htab_t *htab_init(size_t n){

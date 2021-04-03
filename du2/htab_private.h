@@ -1,4 +1,3 @@
-#include <string.h>
 #include "htab.h"
 
 typedef struct htab_item{
