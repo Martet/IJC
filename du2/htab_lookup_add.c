@@ -3,9 +3,11 @@
 
 htab_pair_t * htab_lookup_add(htab_t * t, htab_key_t key){
     htab_pair_t *pair = htab_find(t, key);
-    if(pair)
+    if(pair){
+        pair->value++;
         return pair;
-
+    }
+        
     htab_item_t *new_item = malloc(sizeof(htab_item_t));
     if(new_item == NULL)
         return NULL;
@@ -23,7 +25,7 @@ htab_pair_t * htab_lookup_add(htab_t * t, htab_key_t key){
         save_index->next = new_item;
     }
     
-    new_item->pair = (htab_pair_t) {.key = key, .value = 0};
+    new_item->pair = (htab_pair_t) {.key = key, .value = 1};
     new_item->next = NULL;
     t->size++;
 
