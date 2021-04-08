@@ -8,6 +8,7 @@ bool htab_erase(htab_t * t, htab_key_t key){
         return false;
     if(strcmp(next->pair.key, key) == 0){
         t->items[index] = t->items[index]->next;
+        free((char*)next->pair.key);
         free(next);
         return true;
     }
@@ -16,6 +17,7 @@ bool htab_erase(htab_t * t, htab_key_t key){
     while(next){
         if(strcmp(next->pair.key, key) == 0){
             before->next = next->next;
+            free((char*)next->pair.key);
             free(next);
             return true;
         }

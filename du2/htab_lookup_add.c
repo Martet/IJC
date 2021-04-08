@@ -3,10 +3,8 @@
 
 htab_pair_t * htab_lookup_add(htab_t * t, htab_key_t key){
     htab_pair_t *pair = htab_find(t, key);
-    if(pair){
-        pair->value++;
+    if(pair)
         return pair;
-    }
         
     htab_item_t *new_item = malloc(sizeof(htab_item_t));
     if(new_item == NULL)
@@ -24,8 +22,15 @@ htab_pair_t * htab_lookup_add(htab_t * t, htab_key_t key){
         }
         save_index->next = new_item;
     }
-    
-    new_item->pair = (htab_pair_t) {.key = key, .value = 1};
+
+    char *keyptr = malloc(strlen(key) + 1);
+    if(keyptr == NULL){
+        free(new_item);
+        return NULL;
+    }
+    strcpy(keyptr, key);    
+
+    new_item->pair = (htab_pair_t) {.key = (htab_key_t)keyptr, .value = 0};
     new_item->next = NULL;
     t->size++;
 
