@@ -1,3 +1,8 @@
+// htab_erase.c
+// Řešení IJC-DU2, 2. úkol, 8.4.2021
+// Autor: Martin Zmitko, xzmitk01
+// Přeloženo: gcc 9.3
+
 #include "htab_private.h"
 #include <stdlib.h>
 
@@ -10,6 +15,7 @@ bool htab_erase(htab_t * t, htab_key_t key){
         t->items[index] = t->items[index]->next;
         free((char*)next->pair.key);
         free(next);
+        t->size--;
         return true;
     }
     htab_item_t *before = next;
@@ -19,6 +25,7 @@ bool htab_erase(htab_t * t, htab_key_t key){
             before->next = next->next;
             free((char*)next->pair.key);
             free(next);
+            t->size--;
             return true;
         }
         before = next;

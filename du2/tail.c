@@ -1,3 +1,8 @@
+// tail.c
+// Řešení IJC-DU2, 1. úkol, 8.4.2021
+// Autor: Martin Zmitko, xzmitk01
+// Přeloženo: gcc 9.3
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
