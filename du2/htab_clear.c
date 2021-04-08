@@ -7,13 +7,13 @@
 #include <stdlib.h>
 
 void htab_clear(htab_t * t){
-    for(size_t i = 0; i < t->arr_size; i++){
+    for(size_t i = 0; i < t->arr_size; i++){ //loop through buckets
         htab_item_t *item = t->items[i];
-        t->items[i] = NULL;
-        while(item){
+        t->items[i] = NULL; //set first pointer to NULL (all other items lost)
+        while(item){ //loop through all items in bucket
             htab_item_t *next_item = item->next;
             free((char*)item->pair.key);
-            free(item);
+            free(item); //free every item
             item = next_item;
         }
     }

@@ -17,6 +17,7 @@
 #define mallocErr "memory allocation failed"
 #define lenErr "word was truncated to the max length of 127 chars"
 
+//Function for printing key/value pairs
 void printWord(htab_pair_t *pair){
     printf("%s\t%d\n", pair->key, pair->value);
 }
@@ -30,7 +31,9 @@ int main(){
 
     bool printedErr = false;
     char buf[MAX_LEN];
+    //read words until there are some to be read
     while(read_word(buf, MAX_LEN, stdin) > 0){
+        //add the word to hashtab and check if added correctly
         htab_pair_t *pair = htab_lookup_add(t, buf);
         if(pair == NULL){
             htab_free(t);
@@ -39,17 +42,20 @@ int main(){
         }
         pair->value++;
 
+        //if next character isnt whitespace, whole word wasn't read
         int next_char = getc(stdin);
         if(!isspace(next_char)){
-            if(!printedErr){
+            if(!printedErr){ //print error if not printed
                 fprintf(stderr, "WARNING: %s\n", lenErr);
                 printedErr = true;
             }
+            //read and thrash rest of characters in word
             while(!isspace(next_char) && next_char != EOF)
                 next_char = getc(stdin);
         }
     }
 
+    //print words
     htab_for_each(t, &printWord);
 
     htab_free(t);

@@ -5,4 +5,5 @@
 
 #include "htab_private.h"
 
+//dynamically initializes a new hash table with n buckets
 htab_t *htab_init(size_t n);

@@ -5,4 +5,5 @@
 
 #include <stdio.h>
 
+//reads one word delimited by isspace characters up to max characters into s from stream f
 int read_word(char *s, int max, FILE *f);

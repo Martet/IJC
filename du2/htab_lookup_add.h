@@ -5,4 +5,5 @@
 
 #include "htab_private.h"
 
+//returns an item from htab, if it already exists with key or creates a new one with key
 htab_pair_t * htab_lookup_add(htab_t * t, htab_key_t key);

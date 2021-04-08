@@ -5,4 +5,5 @@
 
 #include "htab_private.h"
 
+//removes all items from htab and frees it
 void htab_free(htab_t * t); 

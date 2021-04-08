@@ -10,19 +10,20 @@ bool htab_erase(htab_t * t, htab_key_t key){
     size_t index = htab_hash_function(key) % htab_bucket_count(t);
     htab_item_t *next = t->items[index];
     if(next == NULL)
-        return false;
-    if(strcmp(next->pair.key, key) == 0){
-        t->items[index] = t->items[index]->next;
+        return false; //nothing in bucket
+
+    if(strcmp(next->pair.key, key) == 0){ //if first item matches
+        t->items[index] = t->items[index]->next; //set first pointer to next item
         free((char*)next->pair.key);
-        free(next);
+        free(next); //free item
         t->size--;
         return true;
     }
     htab_item_t *before = next;
     next = next->next;
-    while(next){
+    while(next){ //loop through rest of items
         if(strcmp(next->pair.key, key) == 0){
-            before->next = next->next;
+            before->next = next->next; 
             free((char*)next->pair.key);
             free(next);
             t->size--;

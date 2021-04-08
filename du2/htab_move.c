@@ -6,12 +6,16 @@
 #include "htab_private.h"
 
 htab_t *htab_move(size_t n, htab_t *from){
+    //innit and check new htab
     htab_t *new_tab = htab_init(n);
     if(new_tab == NULL)
         return NULL;
+
+    //for each item in htab
     for(size_t i = 0; i < from->arr_size; i++){
         htab_item_t *item = from->items[i];
         while(item){
+            //add item to new htab and check if valid
             htab_pair_t *pair = htab_lookup_add(new_tab, item->pair.key);
             if(pair == NULL){
                 htab_free(new_tab);
@@ -21,6 +25,7 @@ htab_t *htab_move(size_t n, htab_t *from){
             item = item->next;
         }
     }
+    //delete all items from source htab
     htab_clear(from);
     return new_tab;
 }

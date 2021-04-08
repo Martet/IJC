@@ -5,4 +5,5 @@
 
 #include <string.h>
 
+//returns hash of key
 size_t htab_hash_function(const char *str);

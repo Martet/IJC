@@ -5,4 +5,5 @@
 
 #include "htab_private.h"
 
+//returns count of available buckets (htab size)
 size_t htab_bucket_count(const htab_t * t);

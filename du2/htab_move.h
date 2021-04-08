@@ -5,4 +5,5 @@
 
 #include "htab_private.h"
 
+//moves items from one htab to a new one of size n, which is returned
 htab_t *htab_move(size_t n, htab_t *from); 
