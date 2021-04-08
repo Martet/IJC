@@ -8,17 +8,17 @@
 
 int read_word(char *s, int max, FILE *f){
     int next_char = fgetc(f), count = 0;
-    while(isspace(next_char)){
-        if(next_char == EOF)
-            return 0;
+    while(isspace(next_char))
         next_char = fgetc(f);
-    }
+    if(next_char == EOF)
+        return 0;
 
     while(!isspace(next_char) && count < max - 1){
         s[count] = next_char;
         count++;
         next_char = fgetc(f);
     }
+    ungetc(next_char, f);
     s[count] = 0;
     return count;
 }
