@@ -14,7 +14,7 @@ wordcountcc: wordcount.cc
 	g++ -std=c++11 -O2 wordcount.cc -o wordcountcc
 
 wordcount: wordcount.o io.o libhtab.a
-	$(CC) $(CFLAGS) wordcount.o io.o  -L. -l:libhtab.a -o $@
+	$(CC) $(CFLAGS) wordcount.o io.o -static -L. -l:libhtab.a -o $@
 
 wordcount-dynamic: wordcount.o io.o libhtab.so
 	$(CC) $(CFLAGS) wordcount.o io.o -Wl,-R. -L. -l:libhtab.so -o $@
@@ -25,7 +25,7 @@ libhtab.a: $(LIBFILES)
 libhtab.so: $(SHLIBFILES)
 	$(CC) $(CFLAGS) $^ -shared -o $@
 
-%_sh.o: %.c %.h
+%_sh.o: %.c
 	$(CC) $(CFLAGS) -fPIC -c $< -o $@
 
 zip:

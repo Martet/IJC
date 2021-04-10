@@ -40,7 +40,7 @@ htab_pair_t * htab_lookup_add(htab_t * t, htab_key_t key){
     strcpy(keyptr, key);    
 
     //save new pair
-    new_item->pair = (htab_pair_t) {.key = (htab_key_t)keyptr, .value = 0};
+    new_item->pair = (htab_pair_t) {.key = keyptr, .value = 0};
     new_item->next = NULL;
     t->size++;
 
