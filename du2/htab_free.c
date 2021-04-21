@@ -6,6 +6,7 @@
 #include "htab_private.h"
 #include <stdlib.h>
 
+//removes all items from htab and frees it
 void htab_free(htab_t * t){
     htab_clear(t);
     free(t);

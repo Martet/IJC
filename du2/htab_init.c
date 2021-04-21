@@ -6,6 +6,7 @@
 #include <stdlib.h>
 #include "htab_private.h"
 
+//dynamically initializes a new hash table with n buckets
 htab_t *htab_init(size_t n){
     htab_t *new_htab = malloc(sizeof(htab_t) + n * sizeof(htab_item_t*));
     if (new_htab == NULL)

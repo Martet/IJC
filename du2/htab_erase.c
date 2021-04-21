@@ -6,6 +6,7 @@
 #include "htab_private.h"
 #include <stdlib.h>
 
+//erases an item with given key form htab t, returns true on success, false if nothing erased
 bool htab_erase(htab_t * t, htab_key_t key){
     size_t index = htab_hash_function(key) % htab_bucket_count(t);
     htab_item_t *next = t->items[index];

@@ -6,6 +6,7 @@
 #include "htab_private.h"
 #include <stdlib.h>
 
+//removes all items from htab t
 void htab_clear(htab_t * t){
     for(size_t i = 0; i < t->arr_size; i++){ //loop through buckets
         htab_item_t *item = t->items[i];

@@ -10,7 +10,8 @@
 #include "htab.h"
 #include "io.h"
 
-#define HTAB_BCOUNT 100000
+//total bucket count, unknown data size so it has to be big enough, primes work better
+#define HTAB_BCOUNT 100003
 #define MAX_LEN 128
 
 //definitions of error messages
@@ -54,6 +55,12 @@ int main(){
                 next_char = getc(stdin);
         }
     }
+
+    #ifdef MOVETEST
+    htab_t *new = htab_move(50000, t);
+    htab_free(t);
+    t = new;
+    #endif
 
     //print words
     htab_for_each(t, &printWord);
