@@ -3,6 +3,9 @@
 // Autor: Martin Zmitko, xzmitk01
 // Přeloženo: gcc 9.3
 
+#ifndef __htab_private_
+#define __htab_private_
+
 #include "htab.h"
 
 typedef struct htab_item{
@@ -15,3 +18,5 @@ struct htab {
     size_t arr_size;
     htab_item_t *items[];
 };
+
+#endif
