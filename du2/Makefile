@@ -29,10 +29,9 @@ libhtab.so: $(SHLIBFILES)
 	$(CC) $(CFLAGS) -fPIC -c $< -o $@
 
 zip:
-	rm -f xzmitk01.zip
 	zip xzmitk01.zip *.c *.h Makefile
 
 clean:
-	rm -f *.o libhtab.a libhtab.so tail wordcount wordcount-dynamic wordcountcc xzmitk01.zip
+	rm -f *.o libhtab.a libhtab.so tail wordcount wordcount-dynamic wordcountcc 
 
 .PHONY: clean zip all run
